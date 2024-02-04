@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Generalizable SAM</title>
+  <title>Generalizable SAM++</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,7 +52,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Is Manual Instance-specific Prompt Necessary for Promptable Semantic Segmentation</h1>
+            <h1 class="title is-1 publication-title">Is Instance-specific Manual Prompt Necessary for Semantic Segmentation by Promptable Segmentation?</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -67,7 +67,8 @@
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Queen Mary University of London<br>AAAI 2024</span>
+                    <!-- <span class="author-block">Queen Mary University of London<br>AAAI 2024</span> -->
+                    <span class="author-block">Queen Mary University of London</span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution</small></span>
                   </div>
 
@@ -75,7 +76,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                      <!-- ArXiv abstract Link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                     <a href="https://arxiv.org/abs/2312.07374" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -83,10 +84,10 @@
                     </span>
                     <span>arXiv</span>
                     </a>
-                    </span>
+                    </span> -->
 
                     <!-- Supplementary PDF link -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="supplementary_material.pdf" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -94,10 +95,10 @@
                       </span>
                       <span>Supplementary</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Github link -->
-                  <span class="link-block">
+                  <!-- <span class="link-block">
                     <a href="https://github.com/jyLin8100/GenSAM" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -105,7 +106,7 @@
                     </span>
                     <span>Code</span>
                   </a>
-                </span>
+                </span> -->
             </div>
           </div>
         </div>
@@ -127,8 +128,7 @@
             }
           </style>
           <p>
-            Camouflaged object detection (COD) approaches heavily rely on pixel-level annotated datasets. Weakly-supervised COD (WSCOD) approaches use sparse annotations like scribbles or points to reduce annotation effort, but this can lead to decreased accuracy. 
-            The Segment Anything Model (SAM) shows remarkable segmentation ability with sparse prompts like points. However, manual prompt is not always feasible, as it may not be accessible in real-world application. Additionally, it only provides localization information instead of semantic one, which can intrinsically cause ambiguity in interpreting the targets. In this work, we aim to eliminate the need for manual prompt. The key idea is to employ Cross-modal Chains of Thought Prompting (CCTP) to reason visual prompts using the semantic information given by a generic text prompt. To that end, we introduce a test-time adaptation per-instance mechanism called Generalizable SAM (GenSAM) to automatically generate and optimize visual prompts the generic task prompt for WSCOD. In particular, CCTP maps a single generic text prompt onto image-specific consensus foreground and background heatmaps using vision-language models, acquiring reliable visual prompts. Moreover, to test-time adapt the visual prompts, we further propose Progressive Mask Generation (PMG) to iteratively reweight the input image, guiding the model to focus on the targets in a coarse-to-fine manner. Crucially, all network parameters are fixed, avoiding the need for additional training. Experiments demonstrate the superiority of GenSAM. Experiments on three benchmarks demonstrate that GenSAM outperforms point supervision approaches and achieves comparable results to scribble supervision ones, solely relying on general task descriptions as prompts.
+            Promptable Segmentation approaches like the Segment Anything Model (SAM) exhibit superior generalization ability thanks to extensive training on large-scale annotated masks. However, it relies upon instance-specific manual prompts to guide for segmenting interested targets. Manual prompt can be categorized as visual or text prompts, with the former only providing localization information instead of semantic information, while the latter is the opposite. Both of them can cause ambiguity in interpreting the targets. Additionally, manual prompts may not be always accessible in real-world application. In this work, we aim to eliminate the need for manual prompt. The key idea is to employ a Progressive Task Control (PTC) to gradually control the visual prompts generation, using the semantic information given by a task generic text prompt. To that end, we introduce a test-time adaptation mechanism called Generalizable SAM++ (GenSAM++) to automatically generate and optimize visual prompts. In particular, PTC first maps a task-generic text prompt onto image-specific consensus foreground and background heatmaps using vision-language models, acquiring reliable visual prompts for segmentation. Then the consensus heatmaps are iteratively reweighted on the input image, controlling the model to focus on the targets in a coarse-to-fine manner. Crucially, GenSAM++ is training-free and test-time optimized.
           </p>
         </div>
       </div>
@@ -138,20 +138,7 @@
 <!-- End paper abstract -->
 
 <!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="framework.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        This video shows how our framework works. 
-      </h2>
-    </div>
-  </div>
-</section>
+
 <!-- End teaser video -->
 
 <!-- Image carousel -->
@@ -162,37 +149,55 @@
         <div class="item">
           <!-- Your image here -->
           <div style="display: flex; justify-content: center; align-items: center;">
-          <img src="static/images/AIG_framework_v3.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 30px;"/>
+          <img src="static/images/framework_v5.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 30px;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Framework of our GenSAM
+            Framework of our GenSAM++
           </h2>
         </div>
         <div class="item">
           <!-- Your image here -->
           <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/supp_cod.png" alt="MY ALT TEXT" style="width: 780px; height: auto; margin-top: -15px;"/>
+            <img src="static/images/vis_specific_1.png" alt="MY ALT TEXT" style="width: 780px; height: auto; margin-top: -15px;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Example images on COD tasks
+            Visualization among camouflaged object detection, polyp image segmentation, transparent object detection and shadow Detection.
           </h2>
         </div>
         <div class="item">
           <!-- Your image here -->
           <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/supp_other.png" alt="MY ALT TEXT" style="width: 800px; height: auto;"/>
+            <img src="static/images/OVSS.png" alt="MY ALT TEXT" style="width: 800px; height: auto;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Example images on COD tasks
+            Visualization of open-vocabulary semantic segmentation.
           </h2>
         </div>
         <div class="item">
           <!-- Your image here -->
           <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/result1.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 60px;"/>
+            <img src="static/images/result_cod.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 60px;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Experiment Results.
+            Results on Camouflaged Object Detection (COD).
+          </h2>
+        </div>
+        <div class="item">
+          <!-- Your image here -->
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/result_pis_tod_sd.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 60px;"/>
+          </div>
+          <h2 class="subtitle has-text-centered">
+            Results on Polyp Image Segmentation (PIS), Object Detection (TOD) and Results on Shadow Detection (SD).
+          </h2>
+        </div>
+        <div class="item">
+          <!-- Your image here -->
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/result_ovs.png" alt="MY ALT TEXT" style="width: 800px; height: auto; margin-top: 60px;"/>
+          </div>
+          <h2 class="subtitle has-text-centered">
+            Result on Open-Vocabulary Segmentation (OVS) and Explainability Tasks.
           </h2>
         </div>
       </div>
@@ -205,14 +210,7 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{hu2023relax,
-      title={Relax Image-Specific Prompt Requirement in SAM: A Single Generic Prompt for Segmenting Camouflaged Objects}, 
-      author={Jian Hu and Jiayi Lin and Weitong Cai and Shaogang Gong},
-      year={2023},
-      eprint={2312.07374},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}</code></pre>
+      <pre><code>placeholder</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
