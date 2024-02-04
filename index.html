@@ -25,7 +25,7 @@
 
 
   <title>Generalizable SAM++</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="static/images/favicon_qmul.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -122,13 +122,16 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <style>
+          <!-- <style>
             .content {
               font-family: "Times New Roman", Times, serif;
             }
-          </style>
+          </style> -->
           <p>
             Promptable Segmentation approaches like the Segment Anything Model (SAM) exhibit superior generalization ability thanks to extensive training on large-scale annotated masks. However, it relies upon instance-specific manual prompts to guide for segmenting interested targets. Manual prompt can be categorized as visual or text prompts, with the former only providing localization information instead of semantic information, while the latter is the opposite. Both of them can cause ambiguity in interpreting the targets. Additionally, manual prompts may not be always accessible in real-world application. In this work, we aim to eliminate the need for manual prompt. The key idea is to employ a Progressive Task Control (PTC) to gradually control the visual prompts generation, using the semantic information given by a task generic text prompt. To that end, we introduce a test-time adaptation mechanism called Generalizable SAM++ (GenSAM++) to automatically generate and optimize visual prompts. In particular, PTC first maps a task-generic text prompt onto image-specific consensus foreground and background heatmaps using vision-language models, acquiring reliable visual prompts for segmentation. Then the consensus heatmaps are iteratively reweighted on the input image, controlling the model to focus on the targets in a coarse-to-fine manner. Crucially, GenSAM++ is training-free and test-time optimized.
+          </p>
+          <p>
+            <img src="static/images/moti_v1.png" alt="teaser" class="center-image blend-img-background"/>
           </p>
         </div>
       </div>
@@ -141,69 +144,92 @@
 
 <!-- End teaser video -->
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <!-- Your image here -->
-          <div style="display: flex; justify-content: center; align-items: center;">
-          <img src="static/images/framework_v5.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 30px;"/>
+
+<section class="section is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Framework</h2>
+          <div class="level-set has-text-justified">
+            <!-- <p>
+              placeholder
+            </p> -->
           </div>
-          <h2 class="subtitle has-text-centered">
-            Framework of our GenSAM++
-          </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/vis_specific_1.png" alt="MY ALT TEXT" style="width: 780px; height: auto; margin-top: -15px;"/>
-          </div>
-          <h2 class="subtitle has-text-centered">
-            Visualization among camouflaged object detection, polyp image segmentation, transparent object detection and shadow Detection.
-          </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/OVSS.png" alt="MY ALT TEXT" style="width: 800px; height: auto;"/>
-          </div>
-          <h2 class="subtitle has-text-centered">
-            Visualization of open-vocabulary semantic segmentation.
-          </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/result_cod.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 60px;"/>
-          </div>
-          <h2 class="subtitle has-text-centered">
-            Results on Camouflaged Object Detection (COD).
-          </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/result_pis_tod_sd.png" alt="MY ALT TEXT" style="width: 1000px; height: auto; margin-top: 60px;"/>
-          </div>
-          <h2 class="subtitle has-text-centered">
-            Results on Polyp Image Segmentation (PIS), Object Detection (TOD) and Results on Shadow Detection (SD).
-          </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/result_ovs.png" alt="MY ALT TEXT" style="width: 800px; height: auto; margin-top: 60px;"/>
-          </div>
-          <h2 class="subtitle has-text-centered">
-            Result on Open-Vocabulary Segmentation (OVS) and Explainability Tasks.
-          </h2>
+          <img src="static/images/framework_v5.png" alt="framework" class="center-image"/>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- <section class="section is-small">
+  <div class="container is-max-desktop"> -->
+<section class="section hero is-light">
+    <div class="container is-full is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Visualization</h2>
+          <div class="level-set has-text-justified">
+            <h4 class="subtitle has-text-justified">
+              Camouflaged Object Detection (COD), Polyp Image Segmentation (PIS), Transparent Object Detection (TOD) and Shadow Detection (SD)
+            </h4>
+          </div>
+          <img src="static/images/vis_specific_1.png" alt="Vis" class="center-image"/>
+        </div>
+        <div class="content">
+        <div class="level-set has-text-justified">
+          <h4 class="subtitle has-text-justified">
+           Open-Vocabulary semantic Segmentation (OVS)
+          </h4>
+        </div>
+        <img src="static/images/vis_specific_1.png" alt="framework" class="center-image"/>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-small">
+  <div class="container is-full is-max-desktop">
+  <div class="columns is-centered">
+    <div class="column is-full">
+      <div class="content">
+        <h2 class="title is-3">Experimental Results</h2>
+        <div class="level-set has-text-justified">
+          <h4 class="subtitle has-text-justified">
+            Camouflaged Object Detection (COD)
+          </h4>
+        </div>
+        <img src="static/images/result_cod.png" alt="result_cod" class="center-image"/>
+      </div>
+      <div class="content">
+      <div class="level-set has-text-justified">
+        <h4 class="subtitle has-text-justified">
+          Polyp Image Segmentation (PIS), Object Detection (TOD) and Shadow Detection (SD)
+        </h4>
+      </div>
+      <img src="static/images/result_pis_tod_sd.png" alt="result_pis_tod_sd" class="center-image"/>
+    </div>
+      <div class="content">
+        <div class="level-set has-text-justified">
+          <h4 class="subtitle has-text-justified">
+            Open-Vocabulary Segmentation (OVS) and Explainability Tasks
+          </h4>
+        </div>
+        <img src="static/images/result_ovs.png" alt="result_ovs" class="center-image"/>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- Image carousel -->
+
 <!-- End image carousel -->
 
 <!--BibTex citation -->
